@@ -4,10 +4,12 @@ $(document).ready(function () {
         this.task = task;
         this.id = 'new';
     }
+
     var addTask = function (task) {
         if (task) {
             task = new Task(task);
             listo.push(task);
+
 
             $('#newItemInput').val('');
 
@@ -20,7 +22,9 @@ $(document).ready(function () {
                 '</span>' +
                 '</li>' +
                 '</a>'
+
             );
+
         }
         $('#newTaskForm').hide('fast', 'linear');
     };
@@ -28,10 +32,12 @@ $(document).ready(function () {
         e.preventDefault();
         var task = $('#newItemInput').val().trim();
         addTask(task);
+
     });
     //Opens form
     $('#add-todo').on('click', function () {
         $('#newTaskForm').fadeToggle('fast', 'linear');
+
     });
     //closes form
     $('#cancel').on('click', function (e) {
@@ -73,7 +79,12 @@ $(document).ready(function () {
         e.preventDefault();
         var task = this;
         advanceTask(task);
+
     });
+    localStorage.setItem('listo', listo)
+    if (localStorage.getItem('listo')) {
+        $('#todos').html(localStorage.getItem('listo'));
+    }
 
 
 
